@@ -7,9 +7,9 @@
 | BIG5 | Big Five | Traditional Chinese | No | 1-2 | WIN950, Windows950 |
 | EUC_CN | Extended UNIX Code-CN | Simplified Chinese | Yes | 1-3 |  |
 | EUC_JP | Extended UNIX Code-JP | Japanese | Yes | 1-3 |  |
-| EUC_JIS_2004 | Extended UNIX Code-JP, JIS X 0213 | Japanese | Yes | 1-3 |  
+| EUC_JIS_2004 | Extended UNIX Code-JP, JIS X 0213 | Japanese | Yes | 1-3 |     |
 | EUC_KR | Extended UNIX Code-KR | Korean | Yes | 1-3 |   |
-| EUC_TW | Extended UNIX Code-TW | Traditional Chinese, Taiwanese | Yes | 1-3 |  
+| EUC_TW | Extended UNIX Code-TW | Traditional Chinese, Taiwanese | Yes | 1-3 |    | 
 | GB18030 | National Standard | Chinese | No | 1-2 |   |
 | GBK | Extended National Standard | Simplified Chinese | No | 1-2 | WIN936, Windows936 |
 | ISO_8859_5 | ISO 8859-5, ECMA 113 | Latin/Cyrillic | Yes | 1 |   |
