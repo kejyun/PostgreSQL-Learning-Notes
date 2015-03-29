@@ -1,6 +1,6 @@
 # Summary
 
-
+* [資料類型](datatype/datatype-README.md)
 * [環境](environment/environment-README.md)
   * [字元編碼設定](environment/environment-character-sets.md)
 * [工具](tool/tool-README.md)
