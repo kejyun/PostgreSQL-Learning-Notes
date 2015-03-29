@@ -1,23 +1,24 @@
 # 字元編碼設定
 
-| ------------- |:-------------:|:-------------:|:-------------:|
+
+
 | Name | Description | Language | Server? | Bytes/Char | Aliases |
 | ------------- |:-------------:|:-------------:|:-------------:|
 | BIG5 | Big Five | Traditional Chinese | No | 1-2 | WIN950, Windows950 |
-| EUC_CN | Extended UNIX Code-CN | Simplified Chinese | Yes | 1-3 |  
-| EUC_JP | Extended UNIX Code-JP | Japanese | Yes | 1-3 |  
+| EUC_CN | Extended UNIX Code-CN | Simplified Chinese | Yes | 1-3 |  |
+| EUC_JP | Extended UNIX Code-JP | Japanese | Yes | 1-3 |  |
 | EUC_JIS_2004 | Extended UNIX Code-JP, JIS X 0213 | Japanese | Yes | 1-3 |  
-| EUC_KR | Extended UNIX Code-KR | Korean | Yes | 1-3 |  
+| EUC_KR | Extended UNIX Code-KR | Korean | Yes | 1-3 |   |
 | EUC_TW | Extended UNIX Code-TW | Traditional Chinese, Taiwanese | Yes | 1-3 |  
-| GB18030 | National Standard | Chinese | No | 1-2 |  
+| GB18030 | National Standard | Chinese | No | 1-2 |   |
 | GBK | Extended National Standard | Simplified Chinese | No | 1-2 | WIN936, Windows936 |
-| ISO_8859_5 | ISO 8859-5, ECMA 113 | Latin/Cyrillic | Yes | 1 |  
-| ISO_8859_6 | ISO 8859-6, ECMA 114 | Latin/Arabic | Yes | 1 |  
-| ISO_8859_7 | ISO 8859-7, ECMA 118 | Latin/Greek | Yes | 1 |  
-| ISO_8859_8 | ISO 8859-8, ECMA 121 | Latin/Hebrew | Yes | 1 |  
-| JOHAB | JOHAB | Korean (Hangul) | No | 1-3 |  
+| ISO_8859_5 | ISO 8859-5, ECMA 113 | Latin/Cyrillic | Yes | 1 |   |
+| ISO_8859_6 | ISO 8859-6, ECMA 114 | Latin/Arabic | Yes | 1 |   |
+| ISO_8859_7 | ISO 8859-7, ECMA 118 | Latin/Greek | Yes | 1 |   |
+| ISO_8859_8 | ISO 8859-8, ECMA 121 | Latin/Hebrew | Yes | 1 |   |
+| JOHAB | JOHAB | Korean (Hangul) | No | 1-3 |   |
 | KOI8R | KOI8-R | Cyrillic (Russian) | Yes | 1 | KOI8 |
-| KOI8U | KOI8-U | Cyrillic (Ukrainian) | Yes | 1 |  
+| KOI8U | KOI8-U | Cyrillic (Ukrainian) | Yes | 1 |   |
 | LATIN1 | ISO 8859-1, ECMA 94 | Western European | Yes | 1 | ISO88591 |
 | LATIN2 | ISO 8859-2, ECMA 94 | Central European | Yes | 1 | ISO88592 |
 | LATIN3 | ISO 8859-3, ECMA 94 | South European | Yes | 1 | ISO88593 |
@@ -28,22 +29,22 @@
 | LATIN8 | ISO 8859-14 | Celtic | Yes | 1 | ISO885914 |
 | LATIN9 | ISO 8859-15 | LATIN1 with Euro and accents | Yes | 1 | ISO885915 |
 | LATIN10 | ISO 8859-16, ASRO SR 14111 | Romanian | Yes | 1 | ISO885916 |
-| MULE_INTERNAL | Mule internal code | Multilingual Emacs | Yes | 1-4 |  
+| MULE_INTERNAL | Mule internal code | Multilingual Emacs | Yes | 1-4 |   |
 | SJIS | Shift JIS | Japanese | No | 1-2 | Mskanji, ShiftJIS, WIN932, Windows932 |
-| SHIFT_JIS_2004 | Shift JIS, JIS X 0213 | Japanese | No | 1-2 |  
-| SQL_ASCII | unspecified (see text) | any | Yes | 1 |  
+| SHIFT_JIS_2004 | Shift JIS, JIS X 0213 | Japanese | No | 1-2 |   |
+| SQL_ASCII | unspecified (see text) | any | Yes | 1 |   |
 | UHC | Unified Hangul Code | Korean | No | 1-2 | WIN949, Windows949 |
 | UTF8 | Unicode, 8-bit | all | Yes | 1-4 | Unicode |
 | WIN866 | Windows CP866 | Cyrillic | Yes | 1 | ALT |
-| WIN874 | Windows CP874 | Thai | Yes | 1 |  
-| WIN1250 | Windows CP1250 | Central European | Yes | 1 |  
+| WIN874 | Windows CP874 | Thai | Yes | 1 |   |
+| WIN1250 | Windows CP1250 | Central European | Yes | 1 |   |
 | WIN1251 | Windows CP1251 | Cyrillic | Yes | 1 | WIN |
-| WIN1252 | Windows CP1252 | Western European | Yes | 1 |  
-| WIN1253 | Windows CP1253 | Greek | Yes | 1 |  
-| WIN1254 | Windows CP1254 | Turkish | Yes | 1 |  
-| WIN1255 | Windows CP1255 | Hebrew | Yes | 1 |  
-| WIN1256 | Windows CP1256 | Arabic | Yes | 1 |  
-| WIN1257 | Windows CP1257 | Baltic | Yes | 1 |  
+| WIN1252 | Windows CP1252 | Western European | Yes | 1 |  |  
+| WIN1253 | Windows CP1253 | Greek | Yes | 1 |   |
+| WIN1254 | Windows CP1254 | Turkish | Yes | 1 |   |
+| WIN1255 | Windows CP1255 | Hebrew | Yes | 1 |   |
+| WIN1256 | Windows CP1256 | Arabic | Yes | 1 |   |
+| WIN1257 | Windows CP1257 | Baltic | Yes | 1 |   |
 | WIN1258 | Windows CP1258 | Vietnamese | Yes | 1 | ABC, TCVN, TCVN5712, VSCII |
 
 
