@@ -1,0 +1,657 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
+        <title>字元編碼設定 | PostgreSQL 學習筆記</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.0.2">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    
+    
+    <link rel="next" href="../tool/tool-README.html" />
+    
+    
+    <link rel="prev" href="../environment/environment-README.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+    
+
+        
+    <div class="book" data-level="2.1" data-basepath=".." data-revision="Fri Nov 13 2015 07:39:54 GMT+0800 (CST)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="datatype/datatype-README.html">
+            
+                
+                    <a href="../datatype/datatype-README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        資料類型
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="environment/environment-README.html">
+            
+                
+                    <a href="../environment/environment-README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        環境
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="2.1" data-path="environment/environment-character-sets.html">
+            
+                
+                    <a href="../environment/environment-character-sets.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        字元編碼設定
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="tool/tool-README.html">
+            
+                
+                    <a href="../tool/tool-README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        工具
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="tool/tool-admin-software.html">
+            
+                
+                    <a href="../tool/tool-admin-software.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        管理軟體
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                Published with GitBook
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >PostgreSQL 學習筆記</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="%E5%AD%97%E5%85%83%E7%B7%A8%E7%A2%BC%E8%A8%AD%E5%AE%9A">&#x5B57;&#x5143;&#x7DE8;&#x78BC;&#x8A2D;&#x5B9A;</h1>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th style="text-align:center">Description</th>
+<th style="text-align:center">Language</th>
+<th style="text-align:center">Server?</th>
+<th>Bytes/Char</th>
+<th>Aliases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BIG5</td>
+<td style="text-align:center">Big Five</td>
+<td style="text-align:center">Traditional Chinese</td>
+<td style="text-align:center">No</td>
+<td>1-2</td>
+<td>WIN950, Windows950</td>
+</tr>
+<tr>
+<td>EUC_CN</td>
+<td style="text-align:center">Extended UNIX Code-CN</td>
+<td style="text-align:center">Simplified Chinese</td>
+<td style="text-align:center">Yes</td>
+<td>1-3</td>
+<td></td>
+</tr>
+<tr>
+<td>EUC_JP</td>
+<td style="text-align:center">Extended UNIX Code-JP</td>
+<td style="text-align:center">Japanese</td>
+<td style="text-align:center">Yes</td>
+<td>1-3</td>
+<td></td>
+</tr>
+<tr>
+<td>EUC_JIS_2004</td>
+<td style="text-align:center">Extended UNIX Code-JP, JIS X 0213</td>
+<td style="text-align:center">Japanese</td>
+<td style="text-align:center">Yes</td>
+<td>1-3</td>
+<td></td>
+</tr>
+<tr>
+<td>EUC_KR</td>
+<td style="text-align:center">Extended UNIX Code-KR</td>
+<td style="text-align:center">Korean</td>
+<td style="text-align:center">Yes</td>
+<td>1-3</td>
+<td></td>
+</tr>
+<tr>
+<td>EUC_TW</td>
+<td style="text-align:center">Extended UNIX Code-TW</td>
+<td style="text-align:center">Traditional Chinese, Taiwanese</td>
+<td style="text-align:center">Yes</td>
+<td>1-3</td>
+<td></td>
+</tr>
+<tr>
+<td>GB18030</td>
+<td style="text-align:center">National Standard</td>
+<td style="text-align:center">Chinese</td>
+<td style="text-align:center">No</td>
+<td>1-2</td>
+<td></td>
+</tr>
+<tr>
+<td>GBK</td>
+<td style="text-align:center">Extended National Standard</td>
+<td style="text-align:center">Simplified Chinese</td>
+<td style="text-align:center">No</td>
+<td>1-2</td>
+<td>WIN936, Windows936</td>
+</tr>
+<tr>
+<td>ISO_8859_5</td>
+<td style="text-align:center">ISO 8859-5, ECMA 113</td>
+<td style="text-align:center">Latin/Cyrillic</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>ISO_8859_6</td>
+<td style="text-align:center">ISO 8859-6, ECMA 114</td>
+<td style="text-align:center">Latin/Arabic</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>ISO_8859_7</td>
+<td style="text-align:center">ISO 8859-7, ECMA 118</td>
+<td style="text-align:center">Latin/Greek</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>ISO_8859_8</td>
+<td style="text-align:center">ISO 8859-8, ECMA 121</td>
+<td style="text-align:center">Latin/Hebrew</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>JOHAB</td>
+<td style="text-align:center">JOHAB</td>
+<td style="text-align:center">Korean (Hangul)</td>
+<td style="text-align:center">No</td>
+<td>1-3</td>
+<td></td>
+</tr>
+<tr>
+<td>KOI8R</td>
+<td style="text-align:center">KOI8-R</td>
+<td style="text-align:center">Cyrillic (Russian)</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td>KOI8</td>
+</tr>
+<tr>
+<td>KOI8U</td>
+<td style="text-align:center">KOI8-U</td>
+<td style="text-align:center">Cyrillic (Ukrainian)</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>LATIN1</td>
+<td style="text-align:center">ISO 8859-1, ECMA 94</td>
+<td style="text-align:center">Western European</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td>ISO88591</td>
+</tr>
+<tr>
+<td>LATIN2</td>
+<td style="text-align:center">ISO 8859-2, ECMA 94</td>
+<td style="text-align:center">Central European</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td>ISO88592</td>
+</tr>
+<tr>
+<td>LATIN3</td>
+<td style="text-align:center">ISO 8859-3, ECMA 94</td>
+<td style="text-align:center">South European</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td>ISO88593</td>
+</tr>
+<tr>
+<td>LATIN4</td>
+<td style="text-align:center">ISO 8859-4, ECMA 94</td>
+<td style="text-align:center">North European</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td>ISO88594</td>
+</tr>
+<tr>
+<td>LATIN5</td>
+<td style="text-align:center">ISO 8859-9, ECMA 128</td>
+<td style="text-align:center">Turkish</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td>ISO88599</td>
+</tr>
+<tr>
+<td>LATIN6</td>
+<td style="text-align:center">ISO 8859-10, ECMA 144</td>
+<td style="text-align:center">Nordic</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td>ISO885910</td>
+</tr>
+<tr>
+<td>LATIN7</td>
+<td style="text-align:center">ISO 8859-13</td>
+<td style="text-align:center">Baltic</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td>ISO885913</td>
+</tr>
+<tr>
+<td>LATIN8</td>
+<td style="text-align:center">ISO 8859-14</td>
+<td style="text-align:center">Celtic</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td>ISO885914</td>
+</tr>
+<tr>
+<td>LATIN9</td>
+<td style="text-align:center">ISO 8859-15</td>
+<td style="text-align:center">LATIN1 with Euro and accents</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td>ISO885915</td>
+</tr>
+<tr>
+<td>LATIN10</td>
+<td style="text-align:center">ISO 8859-16, ASRO SR 14111</td>
+<td style="text-align:center">Romanian</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td>ISO885916</td>
+</tr>
+<tr>
+<td>MULE_INTERNAL</td>
+<td style="text-align:center">Mule internal code</td>
+<td style="text-align:center">Multilingual Emacs</td>
+<td style="text-align:center">Yes</td>
+<td>1-4</td>
+<td></td>
+</tr>
+<tr>
+<td>SJIS</td>
+<td style="text-align:center">Shift JIS</td>
+<td style="text-align:center">Japanese</td>
+<td style="text-align:center">No</td>
+<td>1-2</td>
+<td>Mskanji, ShiftJIS, WIN932, Windows932</td>
+</tr>
+<tr>
+<td>SHIFT_JIS_2004</td>
+<td style="text-align:center">Shift JIS, JIS X 0213</td>
+<td style="text-align:center">Japanese</td>
+<td style="text-align:center">No</td>
+<td>1-2</td>
+<td></td>
+</tr>
+<tr>
+<td>SQL_ASCII</td>
+<td style="text-align:center">unspecified (see text)</td>
+<td style="text-align:center">any</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>UHC</td>
+<td style="text-align:center">Unified Hangul Code</td>
+<td style="text-align:center">Korean</td>
+<td style="text-align:center">No</td>
+<td>1-2</td>
+<td>WIN949, Windows949</td>
+</tr>
+<tr>
+<td>UTF8</td>
+<td style="text-align:center">Unicode, 8-bit</td>
+<td style="text-align:center">all</td>
+<td style="text-align:center">Yes</td>
+<td>1-4</td>
+<td>Unicode</td>
+</tr>
+<tr>
+<td>WIN866</td>
+<td style="text-align:center">Windows CP866</td>
+<td style="text-align:center">Cyrillic</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td>ALT</td>
+</tr>
+<tr>
+<td>WIN874</td>
+<td style="text-align:center">Windows CP874</td>
+<td style="text-align:center">Thai</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>WIN1250</td>
+<td style="text-align:center">Windows CP1250</td>
+<td style="text-align:center">Central European</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>WIN1251</td>
+<td style="text-align:center">Windows CP1251</td>
+<td style="text-align:center">Cyrillic</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td>WIN</td>
+</tr>
+<tr>
+<td>WIN1252</td>
+<td style="text-align:center">Windows CP1252</td>
+<td style="text-align:center">Western European</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>WIN1253</td>
+<td style="text-align:center">Windows CP1253</td>
+<td style="text-align:center">Greek</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>WIN1254</td>
+<td style="text-align:center">Windows CP1254</td>
+<td style="text-align:center">Turkish</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>WIN1255</td>
+<td style="text-align:center">Windows CP1255</td>
+<td style="text-align:center">Hebrew</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>WIN1256</td>
+<td style="text-align:center">Windows CP1256</td>
+<td style="text-align:center">Arabic</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>WIN1257</td>
+<td style="text-align:center">Windows CP1257</td>
+<td style="text-align:center">Baltic</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>WIN1258</td>
+<td style="text-align:center">Windows CP1258</td>
+<td style="text-align:center">Vietnamese</td>
+<td style="text-align:center">Yes</td>
+<td>1</td>
+<td>ABC, TCVN, TCVN5712, VSCII</td>
+</tr>
+</tbody>
+</table>
+<h2 id="%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">&#x53C3;&#x8003;&#x8CC7;&#x6599;</h2>
+<ul>
+<li><a href="PostgreSQL: Documentation: 9.0: Character Set Support" target="_blank">http://www.postgresql.org/docs/9.0/static/multibyte.html</a></li>
+</ul>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../environment/environment-README.html" class="navigation navigation-prev " aria-label="Previous page: 環境"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../tool/tool-README.html" class="navigation navigation-next " aria-label="Next page: 工具"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-disqus/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-ga/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"disqus":{"shortName":"kejyun-postgresql-notes"},"ga":{"token":"UA-31063691-14","configuration":"auto"}};
+    gitbook.start(config);
+});
+</script>
+
+        <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-31063691-14', 'auto');ga('send', 'pageview');</script>
+    </body>
+    
+</html>

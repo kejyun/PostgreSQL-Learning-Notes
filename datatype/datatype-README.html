@@ -1,0 +1,513 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
+        <title>資料類型 | PostgreSQL 學習筆記</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.0.2">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    
+    
+    <link rel="next" href="../environment/environment-README.html" />
+    
+    
+    <link rel="prev" href="../index.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+    
+
+        
+    <div class="book" data-level="1" data-basepath=".." data-revision="Fri Nov 13 2015 07:39:54 GMT+0800 (CST)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1" data-path="datatype/datatype-README.html">
+            
+                
+                    <a href="../datatype/datatype-README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        資料類型
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="environment/environment-README.html">
+            
+                
+                    <a href="../environment/environment-README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        環境
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="environment/environment-character-sets.html">
+            
+                
+                    <a href="../environment/environment-character-sets.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        字元編碼設定
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="tool/tool-README.html">
+            
+                
+                    <a href="../tool/tool-README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        工具
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="tool/tool-admin-software.html">
+            
+                
+                    <a href="../tool/tool-admin-software.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        管理軟體
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                Published with GitBook
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >PostgreSQL 學習筆記</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="%E8%B3%87%E6%96%99%E9%A1%9E%E5%9E%8B">&#x8CC7;&#x6599;&#x985E;&#x578B;</h1>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th style="text-align:center">Aliases</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bigint</td>
+<td style="text-align:center">int8</td>
+<td style="text-align:center">signed eight-byte integer</td>
+</tr>
+<tr>
+<td>bigserial</td>
+<td style="text-align:center">serial8</td>
+<td style="text-align:center">autoincrementing eight-byte integer</td>
+</tr>
+<tr>
+<td>bit [ (n) ]</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">fixed-length bit string</td>
+</tr>
+<tr>
+<td>bit varying [ (n) ]</td>
+<td style="text-align:center">varbit</td>
+<td style="text-align:center">variable-length bit string</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">logical Boolean (true/false)</td>
+</tr>
+<tr>
+<td>box</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">rectangular box on a plane</td>
+</tr>
+<tr>
+<td>bytea</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">binary data (&quot;byte array&quot;)</td>
+</tr>
+<tr>
+<td>character [ (n) ]</td>
+<td style="text-align:center">char [ (n) ]</td>
+<td style="text-align:center">fixed-length character string</td>
+</tr>
+<tr>
+<td>character varying [ (n) ]</td>
+<td style="text-align:center">varchar [ (n) ]</td>
+<td style="text-align:center">variable-length character string</td>
+</tr>
+<tr>
+<td>cidr</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">IPv4 or IPv6 network address</td>
+</tr>
+<tr>
+<td>circle</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">circle on a plane</td>
+</tr>
+<tr>
+<td>date</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">calendar date (year, month, day)</td>
+</tr>
+<tr>
+<td>double precision</td>
+<td style="text-align:center">float8</td>
+<td style="text-align:center">double precision floating-point number (8 bytes)</td>
+</tr>
+<tr>
+<td>inet</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">IPv4 or IPv6 host address</td>
+</tr>
+<tr>
+<td>integer</td>
+<td style="text-align:center">int, int4</td>
+<td style="text-align:center">signed four-byte integer</td>
+</tr>
+<tr>
+<td>interval [ fields ] [ (p) ]</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">time span</td>
+</tr>
+<tr>
+<td>json</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">JSON data</td>
+</tr>
+<tr>
+<td>line</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">infinite line on a plane</td>
+</tr>
+<tr>
+<td>lseg</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">line segment on a plane</td>
+</tr>
+<tr>
+<td>macaddr</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">MAC (Media Access Control) address</td>
+</tr>
+<tr>
+<td>money</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">currency amount</td>
+</tr>
+<tr>
+<td>numeric [ (p, s) ]</td>
+<td style="text-align:center">decimal [ (p, s) ]</td>
+<td style="text-align:center">exact numeric of selectable precision</td>
+</tr>
+<tr>
+<td>path</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">geometric path on a plane</td>
+</tr>
+<tr>
+<td>point</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">geometric point on a plane</td>
+</tr>
+<tr>
+<td>polygon</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">closed geometric path on a plane</td>
+</tr>
+<tr>
+<td>real</td>
+<td style="text-align:center">float4</td>
+<td style="text-align:center">single precision floating-point number (4 bytes)</td>
+</tr>
+<tr>
+<td>smallint</td>
+<td style="text-align:center">int2</td>
+<td style="text-align:center">signed two-byte integer</td>
+</tr>
+<tr>
+<td>smallserial</td>
+<td style="text-align:center">serial2</td>
+<td style="text-align:center">autoincrementing two-byte integer</td>
+</tr>
+<tr>
+<td>serial</td>
+<td style="text-align:center">serial4</td>
+<td style="text-align:center">autoincrementing four-byte integer</td>
+</tr>
+<tr>
+<td>text</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">variable-length character string</td>
+</tr>
+<tr>
+<td>time [ (p) ] [ without time zone ]</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">time of day (no time zone)</td>
+</tr>
+<tr>
+<td>time [ (p) ] with time zone</td>
+<td style="text-align:center">timetz</td>
+<td style="text-align:center">time of day, including time zone</td>
+</tr>
+<tr>
+<td>timestamp [ (p) ] [ without time zone ]</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">date and time (no time zone)</td>
+</tr>
+<tr>
+<td>timestamp [ (p) ] with time zone</td>
+<td style="text-align:center">timestamptz</td>
+<td style="text-align:center">date and time, including time zone</td>
+</tr>
+<tr>
+<td>tsquery</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">text search query</td>
+</tr>
+<tr>
+<td>tsvector</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">text search document</td>
+</tr>
+<tr>
+<td>txid_snapshot</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">user-level transaction ID snapshot</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">universally unique identifier</td>
+</tr>
+<tr>
+<td>xml</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">XML data</td>
+</tr>
+</tbody>
+</table>
+<h2 id="%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">&#x53C3;&#x8003;&#x8CC7;&#x6599;</h2>
+<ul>
+<li><a href="http://www.postgresql.org/docs/9.3/static/datatype.html" target="_blank">PostgreSQL: Documentation: 9.3: Data Types</a></li>
+</ul>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../environment/environment-README.html" class="navigation navigation-next " aria-label="Next page: 環境"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-disqus/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-ga/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"disqus":{"shortName":"kejyun-postgresql-notes"},"ga":{"token":"UA-31063691-14","configuration":"auto"}};
+    gitbook.start(config);
+});
+</script>
+
+        <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-31063691-14', 'auto');ga('send', 'pageview');</script>
+    </body>
+    
+</html>
